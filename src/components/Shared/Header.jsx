@@ -1,24 +1,25 @@
+import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 
 const Header = () => {
   return (
-    <div className="header bg-blue70 fixed top-0 right-0 left-0 text-center container mx-auto py-[10px]">
+    <div className="header bg-blue70 fixed top-0 right-0 left-0 text-center container mx-auto py-[20px]">
       <div className="flex justify-between items-center mx-auto w-[90%]">
         <div>
-          <a href="/">
+          <NavLink to="/">
             <img src={logo} alt="Ecommerce Logo" />
-          </a>
+          </NavLink>
         </div>
         <div>
           <ul className="text-white flex gap-6">
             <li>
-              <a href="#">Home</a>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <a href="#">Order</a>
+              <NavLink to="/shop">Shop</NavLink>
             </li>
             <li>
-              <a href="#">Order Review</a>
+              <NavLink to="/about">About Us</NavLink>
             </li>
             <li>
               <a href="#">Manage Inventery</a>

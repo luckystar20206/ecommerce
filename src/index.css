@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:wght@100;300;400;700;900&family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&family=Orbitron:wght@400;700&family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  max-width: 1440px;
+  display: block;
+  margin: 0 auto;
+}
+h1 {
+  font-family: Lato;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.9px;
+}
+p {
+  color: #2a414f;
+  font-family: Lato;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.06px;
+}
+a {
+  font-family: Lato;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.085px;
+}
+.heroImage {
+  position: relative;
+  padding-left: 20px;
+}
+.btn {
+  font-family: Lato;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.heroImage::before {
+  content: "";
+  position: absolute;
+  width: 95%;
+  height: 100%;
+  @apply bg-orange;
+  z-index: -99;
+  opacity: 0.5;
+  border-radius: 10px;
+  left: 0px;
+  bottom: 0px;
+}

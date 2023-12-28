@@ -1,0 +1,4 @@
+.sidebar p{
+    font-size: 17px;
+    @apply text-blue;
+}

@@ -1,8 +1,8 @@
 import React from "react";
 import addCard from "../../assets/images/add-card.png"
 
-const Product = ({product}) => {
-    const {name, price, ratings, img} = product;
+const Product = ({product, addToCard}) => {
+    const { name, price, ratings, img} = product;
   return (
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow">
       <a href="#">
@@ -74,13 +74,12 @@ const Product = ({product}) => {
           <span className="text-3xl font-bold text-gray-900">
             {"$ "+price}
           </span>
-          <a
-            href="#"
+          <button onClick={()=> addToCard(product)}
             className="text-white bg-orange hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex gap-3"
           >
             <span>Add to cart</span>
             <span className="w-[20px] h-[20px]"><img src={addCard} alt="" /></span>
-          </a>
+          </button>
         </div>
       </div>
     </div>

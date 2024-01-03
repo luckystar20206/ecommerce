@@ -22,7 +22,10 @@ const Header = () => {
               <NavLink to="/about">About Us</NavLink>
             </li>
             <li>
-              <a href="#">Manage Inventery</a>
+              <NavLink to="/auth">Sing Up</NavLink>
+            </li>
+            <li>
+              <NavLink to="/login">Sing IN</NavLink>
             </li>
           </ul>
         </div>

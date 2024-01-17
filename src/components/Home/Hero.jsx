@@ -13,7 +13,7 @@ const Hero = () => {
             </div>
             <button className='uppercase bg-orange btn p-3'>shop now</button>
         </div>
-        <div className="heroImage h-[600px] w-[600px]">
+        <div className="heroImage h-[600px] w-[600px] -z-10">
             <img src={heroImage} alt="Hero images" className='h-full w-full object-cover float-right rounded-xl -mt-5'/>
         </div>
     </div>

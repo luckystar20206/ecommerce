@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 .navbarDropdown{
     position: relative;
 }
@@ -11,18 +11,4 @@
     left: 25px;
     position: absolute;
     rotate: 45deg;
-=======
-.navbarDropdown{
-    position: relative;
-}
-.navbarDropdown::before{
-    content: "";
-    width: 10px;
-    height: 10px;
-    background: black;
-    top: -5px;
-    left: 25px;
-    position: absolute;
-    rotate: 45deg;
->>>>>>> 9857ca1ffd1f3c1f564ad706a82130ca33e20606
 }

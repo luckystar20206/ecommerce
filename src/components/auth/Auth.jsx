@@ -1,11 +1,3 @@
-// import {
-//   GithubAuthProvider,
-//   GoogleAuthProvider,
-//   getAuth,
-//   signInWithPopup,
-//   signOut,
-// } from "firebase/auth";
-// import app from "../../firebase/firebase.config";
 import { useContext, useState } from "react";
 import Register from "./Register";
 import { AuthContext } from "../../context/AuthContext";

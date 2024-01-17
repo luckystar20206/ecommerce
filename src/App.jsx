@@ -26,7 +26,7 @@ function App() {
           element: <Shop />,
           loader: () => fetch("products.json"),
         },
-        { path: "/auth", element: <Auth /> },
+        { path: "/register", element: <Auth /> },
         { path: "/login", element: <Login /> },
       ],
     },

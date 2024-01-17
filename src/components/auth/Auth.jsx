@@ -1,23 +1,22 @@
-import {
-  GithubAuthProvider,
-  GoogleAuthProvider,
-  getAuth,
-  signInWithPopup,
-  signOut,
-} from "firebase/auth";
-import app from "../../firebase/firebase.config";
-import { useState } from "react";
+// import {
+//   GithubAuthProvider,
+//   GoogleAuthProvider,
+//   getAuth,
+//   signInWithPopup,
+//   signOut,
+// } from "firebase/auth";
+// import app from "../../firebase/firebase.config";
+import { useContext, useState } from "react";
 import Register from "./Register";
+import { AuthContext } from "../../context/AuthContext";
 
-const auth = getAuth(app);
 
 const Auth = () => {
-  const googleProvider = new GoogleAuthProvider();
-  const githubProvider = new GithubAuthProvider();
+  const { googleLogin, githubLogin } = useContext(AuthContext);
   const [user, setUser] = useState({});
 
   const handleGoogleLogin = () => {
-    signInWithPopup(auth, googleProvider)
+    googleLogin()
       .then((result) => {
         setUser(result.user);
       })
@@ -25,17 +24,17 @@ const Auth = () => {
         console.log(error);
       });
   };
-const handleGithubLogin = () => {
-  signInWithPopup(auth, githubProvider)
-    .then((result)=> {
-      setUser(result.user);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
+  const handleGithubLogin = () => {
+    githubLogin()
+      .then((result) => {
+        setUser(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const handleLogOut = () => {
-    signOut(auth)
+    logOut()
       .then(() => {
         setUser({});
       })
@@ -44,8 +43,8 @@ const handleGithubLogin = () => {
       });
   };
   return (
-    <div className="flex flex-col h-screen w-full justify-center items-center space-y-5">
-      <h1>Login system</h1>
+    <div className="flex flex-col w-full justify-center items-center space-y-5 mt-[150px]">
+      <h1>Register</h1>
       {user.uid ? (
         <button
           onClick={handleLogOut}
@@ -54,7 +53,7 @@ const handleGithubLogin = () => {
           Logout
         </button>
       ) : (
-        <div className="space-y-3 flex gap-5 items-center justify-center">
+        <div className="flex gap-5 items-center justify-center">
           <button
             onClick={handleGoogleLogin}
             className="bg-gray text-white p-2 rounded-sm flex items-center gap-3"
@@ -89,16 +88,13 @@ const handleGithubLogin = () => {
         </div>
       )}
       <div className="flex justify-center items-center w-full gap-3">
-        <hr className="h-1 w-full bg-orange outline-none border-0"/>
+        <hr className="h-1 w-full bg-orange outline-none border-0" />
         <span> OR </span>
-        <hr className="h-1 w-full bg-orange outline-none border-0"/>
+        <hr className="h-1 w-full bg-orange outline-none border-0" />
       </div>
       <div>
-        <Register/>
+        <Register />
       </div>
-      <h5>Name: {user.displayName}</h5>
-      <p>{user.email}</p>
-      <img className="rounded-full" src={user.photoURL} alt="" />
     </div>
   );
 };

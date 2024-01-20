@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -11,7 +12,11 @@ const Login = () => {
     password: "",
   });
 
-  const { logIn } = useContext(AuthContext);
+  const { logIn, resetPassword } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/'
 
   const handleInput = (e) => {
     setUserData({
@@ -24,19 +29,36 @@ const Login = () => {
     e.preventDefault();
     logIn(userData.email, userData.password)
       .then((result) => {
-        console.log(result);
         setError(null);
         setSuccess("Login Successfully Done!");
+        // e.target.reset()
+        navigate(from, {replace: true})
       })
       .catch((err) => {
-        console.log(err);
         const errorMessage = err.message;
         setSuccess(null);
         setError(errorMessage);
       });
   };
+
+  const handleForgetPassword = () => {
+    if (!userData.email) {
+      toast.error("Please put your Email!!!");
+      return;
+    }
+    resetPassword(userData.email)
+      .then(() => {
+        toast.success("Please check email and reset the password!");
+      })
+      .catch((err) => {
+        const errorCode = err.code;
+        const errorMessage = err.message;
+        console.log(errorCode, errorMessage);
+      });
+  };
   return (
     <>
+      <Toaster />
       <h1 className="wrapper text-center mb-6">Login</h1>
       <form className="max-w-sm mx-auto w-[500px]">
         <div className="mb-5">
@@ -153,6 +175,12 @@ const Login = () => {
             </div>
           )}
         </div>
+        <p
+          onClick={handleForgetPassword}
+          className="hover:underline text-sm mb-3 block cursor-pointer"
+        >
+          Forget Password
+        </p>
         <Link className="underline text-sm mb-3 block" to="/register">
           Don't Have any accouct, , Please create a accouct{" "}
         </Link>

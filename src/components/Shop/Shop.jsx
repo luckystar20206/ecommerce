@@ -1,10 +1,12 @@
 import { useLoaderData } from "react-router-dom";
 import Product from "./Product";
 import "./Shop.css"
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Cart from "./Cart";
+import { AuthContext } from "../../context/AuthContext";
 
 const Shop = () => {
+  const {user} = useContext(AuthContext)
   const products = useLoaderData();
   const [cardProduct, setCardProduct] = useState([])
   const addToCard = (callBackProduct) => {
@@ -25,7 +27,7 @@ const Shop = () => {
   }
   return (
     <div className="mt-[200px] flex gap-6 container">
-      <div className="w-4/5">
+      {user.emailVerified ? <><div className="w-4/5">
         <div className="grid grid-cols-3 gap-4">
           {products.map((product) => (
             <Product key={product.id} product={product} addToCard={addToCard}/>
@@ -34,7 +36,7 @@ const Shop = () => {
       </div>
       <div className="sidebar w-1/5 bg-orange p-5 overflow-hidden">
         <Cart cart={cardProduct} clearCard={clearCard}/>
-      </div>
+      </div></>: <h1 className='text-orange'>Please verify your Email!</h1>}
     </div>
   );
 };

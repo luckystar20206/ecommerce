@@ -1,13 +1,13 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import logo from "../../assets/images/Logo.png";
 import avatar from "../../assets/images/avatar.jpg";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 const Header = () => {
+  const location = useLocation();
   const { user, logOut, clearUser } = useContext(AuthContext);
   const [dorpDown, setDropDown] = useState(false);
-
   const handleLogOut = () => {
     logOut()
       .then(res => {
@@ -26,19 +26,19 @@ const Header = () => {
         <div className="flex justify-between items-center gap-10">
           <ul className="text-white flex gap-6">
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/" className={location.pathname === '/'? "active-link": ""}>Home</NavLink>
             </li>
             <li>
-              <NavLink to="/shop">Shop</NavLink>
+              <NavLink to="/shop" className={location.pathname === '/shop'? "active-link": ""}>Shop</NavLink>
             </li>
             <li>
-              <NavLink to="/about">About Us</NavLink>
+              <NavLink to="/about" className={location.pathname === '/about'? "active-link": ""}>About Us</NavLink>
             </li>
             {!user && <li>
-              <NavLink to="/register">Sing Up</NavLink>
+              <NavLink to="/register" className={location.pathname === '/register'? "active-link": ""}>Sing Up</NavLink>
             </li>}
             {!user && <li>
-              <NavLink to="/login">Sing IN</NavLink>
+              <NavLink to="/login" className={location.pathname === '/login'? "active-link": ""}>Sing IN</NavLink>
             </li>}
           </ul>
           <div className="relative">

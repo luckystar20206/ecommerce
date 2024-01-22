@@ -59,7 +59,7 @@ const Login = () => {
   return (
     <>
       <Toaster />
-      <h1 className="wrapper text-center mb-6">Login</h1>
+      <h1 className="wrapper text-center mb-6 pt-20">Login</h1>
       <form className="max-w-sm mx-auto md:w-[500px] w-full px-5">
         <div className="mb-5">
           <label

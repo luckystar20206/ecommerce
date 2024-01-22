@@ -4,11 +4,13 @@ import "./Shop.css"
 import { useContext, useState } from "react";
 import Cart from "./Cart";
 import { AuthContext } from "../../context/AuthContext";
+import { CartContext } from "../../context/CartContext";
 
 const Shop = () => {
   const {user} = useContext(AuthContext)
+  const {contextAddCard, clearCart, carts} = useContext(CartContext)
   const products = useLoaderData();
-  const [cardProduct, setCardProduct] = useState([])
+  const [cardProduct, setCardProduct] = useState(carts)
   const addToCard = (callBackProduct) => {
     let newCart = []
     const productExist = cardProduct.find(product => product.id === callBackProduct.id)
@@ -20,10 +22,12 @@ const Shop = () => {
       productExist.quantity = productExist.quantity + 1
       setCardProduct(...rest, productExist)
     }
+    contextAddCard(newCart)
     setCardProduct(newCart)
   }
   const clearCard = () => {
     setCardProduct([])
+    clearCart()
   }
   return (
     <div className="mt-[200px] flex gap-6 container">

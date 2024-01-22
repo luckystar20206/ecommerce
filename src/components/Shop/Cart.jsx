@@ -1,17 +1,10 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
+import { totalPriceClc } from "../../utils/totalPriceCalculation";
 
-const Cart = ({cart, clearCard}) => {
-    // let quantity = 0;
-    let total = 0;
-    let shipping = 0;
-    for(const product of cart){
-        // quantity = quantity + product.quantity
-        total = total + product.price * product.quantity;
-        shipping = shipping + product.shipping
-    }
-
-    const tax = parseFloat((total * 0.1).toFixed(2));
-    const grandTotal = total + tax + shipping;
+const Cart = ({ cart, clearCard }) => {
+  const {total, shipping, tax, grandTotal} = totalPriceClc(cart)
   return (
     <div className="fixed top-[33%] bottom-0 m-auto space-y-5">
       <h2 className="text-center font-bold text-2xl">Order Summary</h2>
@@ -22,7 +15,10 @@ const Cart = ({cart, clearCard}) => {
       <p>
         <b>Grand Total: ${grandTotal}</b>
       </p>
-      <button onClick={()=> clearCard()} className="flex gap-2 btn justify-center items-center bg-[#FF3030] mx-auto py-3 px-4 rounded-sm text-white w-full">
+      <button
+        onClick={() => clearCard()}
+        className="flex gap-2 btn justify-center items-center bg-[#FF3030] mx-auto py-3 px-4 rounded-sm text-white w-full"
+      >
         <span>Clear Cart</span>
         <span>
           <svg
@@ -41,25 +37,27 @@ const Cart = ({cart, clearCard}) => {
           </svg>
         </span>
       </button>
-      <button className="flex gap-2 btn justify-center items-center bg-orange40 mx-auto py-3 px-4 rounded-sm text-white w-full">
-        <span>Review Order</span>
-        <span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-            />
-          </svg>
-        </span>
-      </button>
+      <Link to="/order" className="block mt-5">
+        <button className="flex gap-2 btn justify-center items-center bg-orange40 mx-auto py-3 px-4 rounded-sm text-white w-full">
+          <span>Review Order</span>
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+              />
+            </svg>
+          </span>
+        </button>
+      </Link>
     </div>
   );
 };

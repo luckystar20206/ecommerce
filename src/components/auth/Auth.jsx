@@ -35,7 +35,7 @@ const Auth = () => {
       });
   };
   return (
-    <div className="flex flex-col w-full justify-center items-center space-y-5 mt-[200px]">
+    <div className="flex flex-col w-full justify-center items-center space-y-5 sm:mt-[200px] mt-[200px]">
       <h1>Register</h1>
       {user.uid ? (
         <button

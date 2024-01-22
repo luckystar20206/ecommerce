@@ -46,7 +46,7 @@ const Header = () => {
           </NavLink>
         </div>
         <div className="flex justify-between items-center gap-10">
-          <ul className="text-white flex gap-6">
+          <ul className="text-white flex gap-6 flex-wrap">
             <li>
               <NavLink to="/" className={location.pathname === '/'? "active-link text-sm md:text-xl": " text-sm md:text-xl"}>Home</NavLink>
             </li>
@@ -66,7 +66,7 @@ const Header = () => {
           <div ref={popupRef} className="">
             <img
               onClick={() => setIsPopupVisible(!isPopupVisible)}
-              className="w-16 h-16 rounded-full cursor-pointer"
+              className="min-w-14 h-14 rounded-full cursor-pointer m-2"
               src={user?.photoURL || avatar}
               alt="your avatar"
             />

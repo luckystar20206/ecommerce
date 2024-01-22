@@ -101,8 +101,8 @@ const Register = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center gap-10">
-        <form className="max-w-sm mx-auto w-[500px]">
+      <div className="lg:flex justify-center items-center gap-10">
+        <form className="max-w-sm mx-auto md:w-[500px] w-full px-5">
           <div className="mb-5">
             <label
               htmlFor="fullName"
@@ -281,7 +281,7 @@ const Register = () => {
             </p>
           )}
         </form>
-        <div>
+        <div className="mt-5 lg:mt-0 mx-5">
           <PasswordValidation
             chack={chack}
           />

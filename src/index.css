@@ -61,3 +61,34 @@ a {
 .wrapper{
   margin-top: 100px;
 }
+
+.navbarDropdown{
+  /* position: relative; */
+  z-index: 999999999999999;
+}
+.navbarDropdown::before{
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: black;
+  top: -5px;
+  right: 40%;
+  position: absolute;
+  rotate: 45deg;
+}
+
+.active-link{
+  color: wheat;
+  background: #FF9900;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+.card-icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  right: 5px;
+}

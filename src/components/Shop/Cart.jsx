@@ -6,18 +6,18 @@ import { totalPriceClc } from "../../utils/totalPriceCalculation";
 const Cart = ({ cart, clearCard }) => {
   const {total, shipping, tax, grandTotal} = totalPriceClc(cart)
   return (
-    <div className="fixed top-[33%] bottom-0 m-auto space-y-5">
-      <h2 className="text-center font-bold text-2xl">Order Summary</h2>
+    <div className="space-y-5 overflow-hidden pr-5">
+      <h2 className="text-left font-bold text-xl">Order Summary</h2>
       <p>Selected Items: {cart.length} </p>
       <p>Total Price: ${total}</p>
-      <p>Total Shipping Charge: ${shipping}</p>
+      <p>Shipping Charge: ${shipping}</p>
       <p>Tax ${tax}</p>
       <p>
         <b>Grand Total: ${grandTotal}</b>
       </p>
       <button
         onClick={() => clearCard()}
-        className="flex gap-2 btn justify-center items-center bg-[#FF3030] mx-auto py-3 px-4 rounded-sm text-white w-full"
+        className="flex text center bg-red text-white w-full px-2 py-3 rounded-md "
       >
         <span>Clear Cart</span>
         <span>
@@ -37,8 +37,8 @@ const Cart = ({ cart, clearCard }) => {
           </svg>
         </span>
       </button>
-      <Link to="/order" className="block mt-5">
-        <button className="flex gap-2 btn justify-center items-center bg-orange40 mx-auto py-3 px-4 rounded-sm text-white w-full">
+      <Link to="/order" className="block mt-5 text-md overflow-hidden">
+        <div className=" bg-orange40 rounded-md text-white flex items-center w-full px-2 py-3">
           <span>Review Order</span>
           <span>
             <svg
@@ -56,7 +56,7 @@ const Cart = ({ cart, clearCard }) => {
               />
             </svg>
           </span>
-        </button>
+        </div>
       </Link>
     </div>
   );

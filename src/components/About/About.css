@@ -1,0 +1,40 @@
+.about section {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+
+
+  .about h2 {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    @apply text-orange;
+  }
+
+  .about ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .about li {
+    margin-bottom: 10px;
+  }
+
+  .about .cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    @apply bg-orange;
+  }
+
+  .about .cta-button:hover {
+    @apply bg-orange40;
+  }
